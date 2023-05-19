@@ -1,7 +1,7 @@
 ﻿#define SDL_MAIN_HANDLED
 #include "SDL.h"
 #include "GameCore.h"
-//튜토리얼 1 9분10
+//튜토리얼 2
 
 using namespace DungeonGame;
 
@@ -21,14 +21,32 @@ int main()
     WorldState worldState = {};
 
 
-    InitializeGame(playerState, worldState); //DungeonGame::InitializeGame() 라고 불러올 수도 있다.
+    InitializeGame(pRenderer, playerState, worldState); //DungeonGame::InitializeGame() 라고 불러올 수도 있다.
 
+    int frameStartTicks, frameEndTicks = 0;
+    int deltaTicks = 0;
 
     while (!playerState.HasFinishedGame) //bool 이 false 인 동안 == 게임이 돌아가는동안 
     {
+        if (deltaTicks < 1)
+        {
+            frameStartTicks = SDL_GetTicks();
+            SDL_Delay(1);//min == 1
+            frameEndTicks = SDL_GetTicks();
+            deltaTicks = frameEndTicks - frameStartTicks;
+        }
+
+        frameStartTicks = SDL_GetTicks();
+
         GetInput(playerState, worldState);
-        UpdateGame(playerState, worldState);
+
+        float deltaSeconds = (float)deltaTicks / 1000.0f;
+
+        UpdateGame(deltaSeconds, playerState, worldState);
         RenderGame(pRenderer,playerState, worldState);
+
+        frameEndTicks = SDL_GetTicks();
+        deltaTicks = frameEndTicks - frameStartTicks;
 
     }
 
