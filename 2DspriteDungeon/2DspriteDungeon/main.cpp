@@ -32,7 +32,7 @@ int main()
 
     }
 
-    CleanupGame();
+    CleanupGame(playerState, worldState);
 
        
 
