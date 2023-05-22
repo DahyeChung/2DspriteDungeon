@@ -4,6 +4,11 @@
 namespace DungeonGame
 {
 	SDL_Texture* pTexture = nullptr;
+	Vector2d testPosition = Vector2d(100.0f, 120.0f); 
+	Vector2d testDirection = Vector2d(0.0f, 1.0f); 
+
+
+
 	float testX = 100;
 
 	void InitializeGame(SDL_Renderer* pRenderer, PlayerState& playerState, WorldState& worldState)
@@ -42,13 +47,14 @@ namespace DungeonGame
 	}
 	void UpdateGame(float deltaSeconds, PlayerState& playerState, WorldState& worldState)
 	{
-		testX += 20 * deltaSeconds;
+		testDirection.Normalize();
+		testPosition += testDirection * 50.0f * deltaSeconds;
 	}
 	void RenderGame(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState)
 	{	
 		SDL_RenderClear(pRenderer);
 
-		SDL_Rect destRect = { testX, 150,42, 39 };
+		SDL_Rect destRect = { (int)testPosition.X, (int)testPosition.Y,42, 39 };
 		SDL_RenderCopy(pRenderer, pTexture, nullptr, &destRect);
 
 		SDL_RenderPresent(pRenderer);
