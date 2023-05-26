@@ -1,10 +1,13 @@
 #include "GameCore.h"
 #include <stdio.h>
+#include "Sprite.h"
 
 namespace DungeonGame
 {
 	SDL_Texture* pTexture = nullptr;
-	Vector2d testPosition = Vector2d(100.0f, 120.0f); 
+
+	Sprite testSprite; //스프라이트 여러개
+	Sprite testSprite2;
 	Vector2d testDirection = Vector2d(0.0f, 1.0f); 
 
 
@@ -14,16 +17,21 @@ namespace DungeonGame
 	void InitializeGame(SDL_Renderer* pRenderer, PlayerState& playerState, WorldState& worldState)
 	{
 		playerState.HasFinishedGame = false;
-		SDL_Surface* pBmp = SDL_LoadBMP("Assets\\Sprites\\Hero\\Total\\Walk\\bmp\\HeroKnight_8.bmp"); // 적절한 경로로 수정
-		if (pBmp == nullptr)
-		{
-			printf("Fail to load images");
-			return;
-		}
 
-		SDL_SetColorKey(pBmp, SDL_TRUE, SDL_MapRGB(pBmp->format, 0, 0, 0));
-		pTexture = SDL_CreateTextureFromSurface(pRenderer, pBmp);
-		SDL_FreeSurface(pBmp);
+		//Sprite 1
+		testSprite.Initialize(pRenderer, "Assets\\Sprites\\Hero\\Total\\Walk\\bmp\\HeroKnight_8.bmp");
+		testSprite.Position = Vector2d(100.0f, 120.0f);
+		
+		//Sprite 2
+		testSprite2.Initialize(pRenderer, "나중에 경로 넣어.bmp");
+		testSprite2.Position = Vector2d(100.0f, 220.0f);
+
+
+
+
+
+
+	
 	}
 	void GetInput(PlayerState& playerState, WorldState& worldState)
 	{
@@ -48,20 +56,30 @@ namespace DungeonGame
 	void UpdateGame(float deltaSeconds, PlayerState& playerState, WorldState& worldState)
 	{
 		testDirection.Normalize();
-		testPosition += testDirection * 50.0f * deltaSeconds;
+		testSprite.Position += testDirection * 50.0f * deltaSeconds;
+
+		//여러가지 sprites
+		testSprite.Update(deltaSeconds, playerState, worldState);
+		testSprite2.Update(deltaSeconds, playerState, worldState);
 	}
+
+
 	void RenderGame(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState)
 	{	
 		SDL_RenderClear(pRenderer);
 
-		SDL_Rect destRect = { (int)testPosition.X, (int)testPosition.Y,42, 39 };
-		SDL_RenderCopy(pRenderer, pTexture, nullptr, &destRect);
+
+		//여러가지 sprites
+		testSprite.Render(pRenderer, playerState, worldState);
+		testSprite2.Render(pRenderer, playerState, worldState);
 
 		SDL_RenderPresent(pRenderer);
 	}
 	void CleanupGame(PlayerState& playerState, WorldState& worldState)
 	{
-		SDL_DestroyTexture(pTexture);
+		testSprite.Cleanup();
+		testSprite2.Cleanup();
+
 	}
 
 }
