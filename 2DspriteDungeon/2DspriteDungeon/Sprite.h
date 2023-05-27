@@ -1,7 +1,8 @@
 #pragma once
 #include "SDL.h"
 #include "GameCore.h"
-#include "string"
+#include <string>
+#include <vector>
 
 namespace DungeonGame
 {
@@ -13,6 +14,7 @@ namespace DungeonGame
 		virtual void Update(float deltaSeconds, PlayerState& playerState, WorldState& worldState);
 		virtual void Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState);
 		virtual void Cleanup();
+		static void CleanupTextures();
 
 	public:
 		Vector2d Position;
@@ -21,6 +23,17 @@ namespace DungeonGame
 
 	protected:
 		SDL_Texture* MyTexture; 
+
+		static SDL_Texture* LoadTexture(SDL_Renderer* pRenderer, const std::string& imageFilepath);
+
+
+		struct LoadedTexture //모든 이미지파일 관리
+		{
+			std::string Filename;
+			SDL_Texture* Texture;
+		};
+
+		static std::vector<LoadedTexture> s_LoadedTextures;
 
 	};
 

@@ -80,6 +80,8 @@ namespace DungeonGame
 		testSprite.Cleanup();
 		testSprite2.Cleanup();
 
+		Sprite::CleanupTextures();
+
 	}
 
 }
