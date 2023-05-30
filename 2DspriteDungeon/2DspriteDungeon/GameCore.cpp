@@ -4,10 +4,12 @@
 
 namespace DungeonGame
 {
-	SDL_Texture* pTexture = nullptr;
+	std::vector<Sprite*> SpriteList; //everytime create sprites put it in this list
+	//Sprite testSprite; //스프라이트 여러개
+	//Sprite testSprite2;
 
-	Sprite testSprite; //스프라이트 여러개
-	Sprite testSprite2;
+
+	SDL_Texture* pTexture = nullptr;
 	Vector2d testDirection = Vector2d(0.0f, 1.0f); 
 
 
@@ -18,15 +20,27 @@ namespace DungeonGame
 	{
 		playerState.HasFinishedGame = false;
 
+
 		//Sprite 1
-		testSprite.Initialize(pRenderer, "Assets\\Sprites\\Hero\\Total\\Walk\\bmp\\HeroKnight_8.bmp");
-		testSprite.Position = Vector2d(100.0f, 120.0f);
-		
+		Sprite* newSprite = new Sprite;
+		newSprite->Initialize(pRenderer, "Assets\\Sprites\\Hero\\Total\\Walk\\bmp\\HeroKnight_8.bmp");
+		newSprite->Position = Vector2d(100.0f, 120.0f);
+		SpriteList.push_back(newSprite);
+
 		//Sprite 2
-		testSprite2.Initialize(pRenderer, "나중에 경로 넣어.bmp");
-		testSprite2.Position = Vector2d(100.0f, 220.0f);
+		Sprite* newSprite2 = new Sprite;
+		newSprite2->Initialize(pRenderer, "나중에 경로 넣어.bmp");
+		newSprite2->Position = Vector2d(100.0f, 220.0f);
+		SpriteList.push_back(newSprite2);
 
-
+		for (int i = 0; i < 200; ++i) //만약에 아주여러개 많이 만들려면? 테스트
+		{
+			//Sprite 200
+			Sprite* newSprite3 = new Sprite;
+			newSprite3->Initialize(pRenderer, "나중에 경로 넣어.bmp");
+			newSprite3->Position = Vector2d(100.0f + 16.0f * i, 320.0f + 4.0f * i );
+			SpriteList.push_back(newSprite3);
+		}
 
 
 
@@ -55,12 +69,15 @@ namespace DungeonGame
 	}
 	void UpdateGame(float deltaSeconds, PlayerState& playerState, WorldState& worldState)
 	{
-		testDirection.Normalize();
-		testSprite.Position += testDirection * 50.0f * deltaSeconds;
+		//testDirection.Normalize();
+		//testSprite.Position += testDirection * 50.0f * deltaSeconds;
 
-		//여러가지 sprites
-		testSprite.Update(deltaSeconds, playerState, worldState);
-		testSprite2.Update(deltaSeconds, playerState, worldState);
+		for (unsigned int i = 0; i < SpriteList.size(); ++i)
+		{
+			SpriteList[i]->Update(deltaSeconds, playerState, worldState);
+		}
+		
+
 	}
 
 
@@ -68,17 +85,21 @@ namespace DungeonGame
 	{	
 		SDL_RenderClear(pRenderer);
 
-
-		//여러가지 sprites
-		testSprite.Render(pRenderer, playerState, worldState);
-		testSprite2.Render(pRenderer, playerState, worldState);
+		for (unsigned int i = 0; i < SpriteList.size(); ++i)
+		{
+			SpriteList[i]->Render(pRenderer, playerState, worldState);
+		}
 
 		SDL_RenderPresent(pRenderer);
 	}
 	void CleanupGame(PlayerState& playerState, WorldState& worldState)
 	{
-		testSprite.Cleanup();
-		testSprite2.Cleanup();
+		for (unsigned int i = 0; i < SpriteList.size(); ++i)
+		{
+			SpriteList[i]->Cleanup();
+			delete SpriteList[i];
+		}
+		SpriteList.clear();
 
 		Sprite::CleanupTextures();
 
