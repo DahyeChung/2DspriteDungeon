@@ -1,6 +1,7 @@
 #include "GameCore.h"
 #include <stdio.h>
 #include "Sprite.h"
+#include "Hero.h"
 
 namespace DungeonGame
 {
@@ -20,16 +21,23 @@ namespace DungeonGame
 	{
 		playerState.HasFinishedGame = false;
 
+		playerState.WantsToGoUp = false;
+		playerState.WantsToGoDown = false;
+		playerState.WantsToGoLeft = false;
+		playerState.WantsToGoRight = false;
 
-		//Sprite 1
-		Sprite* newSprite = new Sprite;
-		newSprite->Initialize(pRenderer, "Assets\\Sprites\\Hero\\Total\\Walk\\bmp\\HeroKnight_8.bmp");
-		newSprite->Position = Vector2d(100.0f, 120.0f);
-		SpriteList.push_back(newSprite);
 
+
+
+		//Sprite 1 : hero
+		Hero* newHero = new Hero;
+		newHero->Initialize(pRenderer, "Assets\\Sprites\\Hero\\Total\\Walk\\bmp\\HeroKnight_8.bmp");
+		newHero->Position = Vector2d(100.0f, 120.0f);
+		SpriteList.push_back(newHero);
+		/*
 		//Sprite 2
 		Sprite* newSprite2 = new Sprite;
-		newSprite2->Initialize(pRenderer, "나중에 경로 넣어.bmp");
+		newSprite2->Initialize(pRenderer, "HeroKnight_0_11zon.bmp");
 		newSprite2->Position = Vector2d(100.0f, 220.0f);
 		SpriteList.push_back(newSprite2);
 
@@ -37,10 +45,11 @@ namespace DungeonGame
 		{
 			//Sprite 200
 			Sprite* newSprite3 = new Sprite;
-			newSprite3->Initialize(pRenderer, "나중에 경로 넣어.bmp");
+			newSprite3->Initialize(pRenderer, "Assets\\Sprites\\Hero\\Total\\Idle\\HeroKnight_1_11zon.bmp");
 			newSprite3->Position = Vector2d(100.0f + 16.0f * i, 320.0f + 4.0f * i );
 			SpriteList.push_back(newSprite3);
 		}
+		*/
 
 
 
@@ -62,6 +71,59 @@ namespace DungeonGame
 				case SDLK_ESCAPE:
 					playerState.HasFinishedGame = true;
 					break;
+
+				case SDLK_w:
+				case SDLK_UP:
+					playerState.WantsToGoUp = true;
+					break;
+
+				case SDLK_s:
+				case SDLK_DOWN:
+					playerState.WantsToGoDown = true;
+					break;
+
+				case SDLK_a:
+				case SDLK_LEFT:
+					playerState.WantsToGoLeft = true;
+					break;
+
+				case SDLK_d:
+				case SDLK_RIGHT:
+					playerState.WantsToGoRight = true;
+					break;
+
+
+				}
+
+			}
+
+			else if (e.type == SDL_KEYUP)
+			{	
+				auto keyCode = e.key.keysym.sym;
+				switch (keyCode)
+				{
+
+				case SDLK_w:
+				case SDLK_UP:
+					playerState.WantsToGoUp = false;
+					break;
+
+				case SDLK_s:
+				case SDLK_DOWN:
+					playerState.WantsToGoDown = false;
+					break;
+
+				case SDLK_a:
+				case SDLK_LEFT:
+					playerState.WantsToGoLeft = false;
+					break;
+
+				case SDLK_d:
+				case SDLK_RIGHT:
+					playerState.WantsToGoRight = false;
+					break;
+
+
 				}
 
 			}

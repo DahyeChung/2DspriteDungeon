@@ -91,6 +91,10 @@ namespace DungeonGame
 	struct PlayerState
 	{
 		bool HasFinishedGame;
+		bool WantsToGoUp;
+		bool WantsToGoDown;
+		bool WantsToGoLeft;
+		bool WantsToGoRight;
 	};
 
 	struct WorldState
