@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "Hero.h"
 #include "RoomRenderer.h"
+#include "Item.h"
 
 namespace DungeonGame
 {
@@ -63,9 +64,34 @@ namespace DungeonGame
 			"#..##..#"
 			" ##  ## ";
 		
+		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,7.0f * worldState.TileSizeInPixels.Y) });
+		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
+		worldState.Items.push_back({ true,Item_BluePotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
+
 			RoomRenderer* roomRenderer = new RoomRenderer;
 			roomRenderer->InitializeRoomTiles(pRenderer,"Assets/Sprites/tiles/tile.bmp","Assets/Sprites/tiles/wall.bmp"); //floor and wall
 			SpriteList.push_back(roomRenderer);
+
+
+			for (unsigned int i = 0; i < worldState.Items.size(); ++i)
+			{
+				std::string itemFilepath = "Assets/Sprites/Items/redPotion.bmp";
+
+				switch (worldState.Items[i].Type)
+				{
+				case Item_RedPotion:
+					itemFilepath = "Assets/Sprites/Items/redPotion.bmp";
+					break;
+				case Item_BluePotion:
+					itemFilepath = "Assets/Sprites/Items/bluePotion.bmp";
+					break;
+				}
+
+				Item* newItem = new Item;
+				newItem->Initialize(pRenderer, itemFilepath);
+				newItem->SetItemIndex(i);
+				SpriteList.push_back(newItem);
+			}
 
 		
 		//Sprite 1 : hero

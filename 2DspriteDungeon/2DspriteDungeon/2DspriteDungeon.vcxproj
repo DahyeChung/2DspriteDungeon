@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="GameCore.cpp" />
     <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RoomRenderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -172,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="RoomRenderer.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>

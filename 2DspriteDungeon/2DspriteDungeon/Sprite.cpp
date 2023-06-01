@@ -26,8 +26,12 @@ void Sprite::Update(float deltaSeconds, PlayerState& playerState, WorldState& wo
 
 void Sprite::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState, const Vector2d& baseTranslation)
 {
-	SDL_Rect destRect = { (int)Position.X + (int)baseTranslation.X, (int)Position.Y + (int)baseTranslation.Y,(int)Size.X, (int)Size.Y};
-	SDL_RenderCopy(pRenderer, MyTexture, nullptr, &destRect);
+	if (Visible && MyTexture != nullptr)
+	{
+		SDL_Rect destRect = { (int)Position.X + (int)baseTranslation.X, (int)Position.Y + (int)baseTranslation.Y,(int)Size.X, (int)Size.Y };
+		SDL_RenderCopy(pRenderer, MyTexture, nullptr, &destRect);
+	}
+	
 }
 
 void Sprite::Cleanup()

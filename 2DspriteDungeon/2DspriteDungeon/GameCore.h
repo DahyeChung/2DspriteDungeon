@@ -1,6 +1,7 @@
 #pragma once
 #include "SDL.h"
 #include <string>
+#include <vector>
 
 namespace DungeonGame
 {
@@ -94,6 +95,12 @@ namespace DungeonGame
 
 	};
 
+	enum ItemType
+	{
+		Item_RedPotion,
+		Item_BluePotion
+	};
+
 	struct PlayerState
 	{
 		bool HasFinishedGame;
@@ -104,6 +111,16 @@ namespace DungeonGame
 		bool WantsToGoRight;
 
 		Vector2d PlayerPosition;
+
+		std::vector<ItemType> ItemInventory;
+	};
+
+
+	struct ItemData
+	{
+		bool Alive;
+		ItemType Type;
+		Vector2d Positon;
 	};
 
 	struct WorldState
@@ -113,6 +130,8 @@ namespace DungeonGame
 		Vector2d TileSizeInPixels;
 
 		Vector2d CameraPosition;
+
+		std::vector<ItemData> Items;
 
 		bool IsWalkableTile(const Vector2d& inPosition);
 	};
