@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "Sprite.h"
 #include "Hero.h"
+#include "RoomRenderer.h"
 
 namespace DungeonGame
 {
@@ -27,11 +28,22 @@ namespace DungeonGame
 		playerState.WantsToGoRight = false;
 
 
+		worldState.TilesPerRow = 8; //num of tiles 
+		worldState.Tiles =
+			"  ####  ";
+			" #....# ";
+			"#......#";
+			"#......#";
+			"#..##..#";
+			" ##  ## ";
+		
+			RoomRenderer* roomRenderer = new RoomRenderer;
+			roomRenderer->InitializeRoomTiles(pRenderer, "Assets/Sprites/tiles/tile.bmp","Assets/Sprites/tiles/wall.bmp"); //floor and wall
 
 		
 		//Sprite 1 : hero
 		Hero* newHero = new Hero;
-		newHero->Initialize(pRenderer, "Assets/Sprites/Hero/Total/Walk/HeroKnight_8.bmp");
+		newHero->Initialize(pRenderer, "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp");
 		newHero->Position = Vector2d(100.0f, 120.0f);
 		SpriteList.push_back(newHero);
 		

@@ -166,11 +166,13 @@
     <ClCompile Include="GameCore.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RoomRenderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="Hero.h" />
+    <ClInclude Include="RoomRenderer.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

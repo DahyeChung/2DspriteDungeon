@@ -7,13 +7,13 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 {
 	Vector2d direction(0.0f, 0.0f);
 	if (playerState.WantsToGoUp)
-		direction.Y = 1.0f;
-	else if (playerState.WantsToGoDown)
 		direction.Y = -1.0f;
+	else if (playerState.WantsToGoDown)
+		direction.Y = 1.0f;
 	if (playerState.WantsToGoLeft)
-		direction.X = 1.0f;
-	else if (playerState.WantsToGoRight)
 		direction.X = -1.0f;
+	else if (playerState.WantsToGoRight)
+		direction.X = 1.0f;
 
 	direction.Normalize();
 

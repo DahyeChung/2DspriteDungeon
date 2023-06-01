@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL.h"
+#include <string>
 
 namespace DungeonGame
 {
@@ -99,7 +100,8 @@ namespace DungeonGame
 
 	struct WorldState
 	{
-
+		int TilesPerRow;
+		std::string Tiles;
 	};
 
 

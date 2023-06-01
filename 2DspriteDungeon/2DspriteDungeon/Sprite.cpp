@@ -59,7 +59,7 @@ SDL_Texture* Sprite::LoadTexture(SDL_Renderer* pRenderer, const std::string& ima
 	SDL_Surface* pBmp = SDL_LoadBMP(imageFilepath.c_str()); // multiple sprites
 	if (pBmp == nullptr)
 	{
-		printf("Fail to load images");
+		printf("Fail to load images %s", imageFilepath.c_str());
 		return nullptr;
 	}
 
