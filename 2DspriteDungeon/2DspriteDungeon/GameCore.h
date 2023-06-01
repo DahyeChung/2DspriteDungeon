@@ -102,6 +102,9 @@ namespace DungeonGame
 	{
 		int TilesPerRow;
 		std::string Tiles;
+		Vector2d TileSizeInPixels;
+
+		bool IsWalkableTile(const Vector2d& inPosition);
 	};
 
 

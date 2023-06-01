@@ -10,6 +10,12 @@ namespace DungeonGame
 	//Sprite testSprite; //스프라이트 여러개
 	//Sprite testSprite2;
 
+	bool WorldState::IsWalkableTile(const Vector2d& inPosition) //Tile Collision
+ 	{
+		char currentTile = ' '; //any tiles here will be allowed to move
+
+		return currentTile == '.';
+	}
 
 	SDL_Texture* pTexture = nullptr;
 	Vector2d testDirection = Vector2d(0.0f, 1.0f); 
@@ -29,16 +35,18 @@ namespace DungeonGame
 
 
 		worldState.TilesPerRow = 8; //num of tiles 
+		worldState.TileSizeInPixels = Vector2d(72.0f, 72.0f);
 		worldState.Tiles =
-			"  ####  ";
-			" #....# ";
-			"#......#";
-			"#......#";
-			"#..##..#";
+			"  ####  "
+			" #....# "
+			"#......#"
+			"#......#"
+			"#..##..#"
 			" ##  ## ";
 		
 			RoomRenderer* roomRenderer = new RoomRenderer;
-			roomRenderer->InitializeRoomTiles(pRenderer, "Assets/Sprites/tiles/tile.bmp","Assets/Sprites/tiles/wall.bmp"); //floor and wall
+			roomRenderer->InitializeRoomTiles(pRenderer,"Assets/Sprites/tiles/tile.bmp","Assets/Sprites/tiles/wall.bmp"); //floor and wall
+			SpriteList.push_back(roomRenderer);
 
 		
 		//Sprite 1 : hero

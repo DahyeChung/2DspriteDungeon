@@ -34,8 +34,8 @@ void RoomRenderer::Render(SDL_Renderer* pRenderer, const PlayerState& playerStat
 		if (MyTexture != nullptr) //if nothing 
 		{
 		SDL_Rect destRect = { 
-			columnsRendered * (int)Position.X, 
-			rowsRendered * (int)Position.Y,
+			columnsRendered * (int)Size.X, 
+			rowsRendered * (int)Size.Y,
 			(int)Size.X, 
 			(int)Size.Y };
 

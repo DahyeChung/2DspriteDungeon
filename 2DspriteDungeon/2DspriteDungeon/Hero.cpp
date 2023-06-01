@@ -18,6 +18,12 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 	direction.Normalize();
 
 
-	Position += direction * 200.0f * deltaSeconds;
+
+	Vector2d newPosition = Position;
+	newPosition += direction * 200.0f * deltaSeconds;
+	if (true)
+	{
+		Position = newPosition;
+	}
 
 }
