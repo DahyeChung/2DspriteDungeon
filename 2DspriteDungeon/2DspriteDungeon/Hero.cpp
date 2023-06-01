@@ -26,6 +26,8 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 		playerState.PlayerPosition = newPosition;
 	}
 
+	worldState.CameraPosition = playerState.PlayerPosition;
+
 	Position = playerState.PlayerPosition - Vector2d(Size.X * 0.5f, Size.Y * 0.85f); 
 
 }

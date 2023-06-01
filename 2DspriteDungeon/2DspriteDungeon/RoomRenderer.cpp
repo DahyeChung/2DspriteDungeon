@@ -8,7 +8,7 @@ void RoomRenderer::InitializeRoomTiles(SDL_Renderer* pRenderer, const std::strin
 	WallTexture = LoadTexture(pRenderer, wallFilepath);
 }
 
-void RoomRenderer::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState)
+void RoomRenderer::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState, const Vector2d& baseTranslation)
 {
 	int columnsRendered = 0;
 	int rowsRendered = 0;
@@ -34,8 +34,8 @@ void RoomRenderer::Render(SDL_Renderer* pRenderer, const PlayerState& playerStat
 		if (MyTexture != nullptr) //if nothing 
 		{
 		SDL_Rect destRect = { 
-			columnsRendered * (int)worldState.TileSizeInPixels.X, 
-			rowsRendered * (int)worldState.TileSizeInPixels.Y,
+			columnsRendered * (int)worldState.TileSizeInPixels.X + (int)baseTranslation.X, 
+			rowsRendered * (int)worldState.TileSizeInPixels.Y + (int)baseTranslation.Y,
 			(int)worldState.TileSizeInPixels.X,
 			(int)worldState.TileSizeInPixels.Y };
 

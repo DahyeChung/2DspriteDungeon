@@ -50,6 +50,16 @@ namespace DungeonGame
 			" #....# "
 			"#......#"
 			"#......#"
+			"#......#"
+			"#......#"
+			"#......#"
+			"#......#"
+			"#......#"
+			"#......#"
+			"#......#"
+			"#......#"
+			"#......#"
+			"#......#"
 			"#..##..#"
 			" ##  ## ";
 		
@@ -72,7 +82,8 @@ namespace DungeonGame
 		newSprite2->Initialize(pRenderer, "test.bmp");
 		newSprite2->Position = Vector2d(100.0f, 220.0f);
 		SpriteList.push_back(newSprite2);
-		
+
+		/*
 		for (int i = 0; i < 200; ++i) //만약에 아주여러개 많이 만들려면? 테스트
 		{
 			//Sprite 200
@@ -82,6 +93,7 @@ namespace DungeonGame
 			SpriteList.push_back(newSprite3);
 		}
 		
+		*/
 
 
 
@@ -181,7 +193,7 @@ namespace DungeonGame
 
 		for (unsigned int i = 0; i < SpriteList.size(); ++i)
 		{
-			SpriteList[i]->Render(pRenderer, playerState, worldState);
+			SpriteList[i]->Render(pRenderer, playerState, worldState, Vector2d(WINDOW_WIDTH * 0.5f, WINDOW_HEIGHT * 0.5f) - worldState.CameraPosition);
 		}
 
 		SDL_RenderPresent(pRenderer);

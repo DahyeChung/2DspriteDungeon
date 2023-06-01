@@ -11,7 +11,7 @@ int main()
 
     SDL_Window* pWindow = SDL_CreateWindow("Dungeon Game",
         100, 100, //Display x,y pixel position 
-        1280, 720, //Pixel width * height 
+        WINDOW_WIDTH, WINDOW_HEIGHT, //Pixel width * height 
         SDL_WINDOW_SHOWN); // Show the window
 
     SDL_Renderer* pRenderer = SDL_CreateRenderer(pWindow, -1,

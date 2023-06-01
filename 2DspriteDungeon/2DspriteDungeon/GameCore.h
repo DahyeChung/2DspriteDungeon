@@ -4,6 +4,11 @@
 
 namespace DungeonGame
 {
+	//Window Size
+	const int WINDOW_WIDTH = 1280;
+	const int WINDOW_HEIGHT = 720;
+
+
 	struct Vector2d
 	{
 		float X;
@@ -106,6 +111,8 @@ namespace DungeonGame
 		int TilesPerRow;
 		std::string Tiles;
 		Vector2d TileSizeInPixels;
+
+		Vector2d CameraPosition;
 
 		bool IsWalkableTile(const Vector2d& inPosition);
 	};
