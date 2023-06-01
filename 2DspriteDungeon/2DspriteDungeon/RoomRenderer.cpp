@@ -10,6 +10,9 @@ void RoomRenderer::InitializeRoomTiles(SDL_Renderer* pRenderer, const std::strin
 
 void RoomRenderer::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState)
 {
+	int columnsRendered = 0;
+	int rowsRendered = 0;
+
 	for (unsigned int i = 0; i < worldState.Tiles.size(); ++i)
 	{
 		char currentTile = worldState.Tiles[i];
@@ -30,11 +33,21 @@ void RoomRenderer::Render(SDL_Renderer* pRenderer, const PlayerState& playerStat
 
 		if (MyTexture != nullptr) //if nothing 
 		{
-		SDL_Rect destRect = { (int)Position.X, (int)Position.Y,(int)Size.X, (int)Size.Y };
+		SDL_Rect destRect = { 
+			columnsRendered * (int)Position.X, 
+			rowsRendered * (int)Position.Y,
+			(int)Size.X, 
+			(int)Size.Y };
+
 		SDL_RenderCopy(pRenderer, MyTexture, nullptr, &destRect);
 		}
 
-
+		columnsRendered++;
+		if (columnsRendered % worldState.TilesPerRow == 0)
+		{
+			rowsRendered++;
+			columnsRendered = 0;
+		}
 
 	}
 }
