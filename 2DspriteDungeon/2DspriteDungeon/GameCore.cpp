@@ -12,7 +12,16 @@ namespace DungeonGame
 
 	bool WorldState::IsWalkableTile(const Vector2d& inPosition) //Tile Collision
  	{
+
+		int column = (int)(inPosition.X / TileSizeInPixels.X);
+		int row = (int)(inPosition.Y / TileSizeInPixels.Y);
+
 		char currentTile = ' '; //any tiles here will be allowed to move
+		int index = row * TilesPerRow + column;
+		if (index >= 0 && index < (int)Tiles.size())
+			currentTile = Tiles[index];
+
+		
 
 		return currentTile == '.';
 	}
@@ -52,7 +61,9 @@ namespace DungeonGame
 		//Sprite 1 : hero
 		Hero* newHero = new Hero;
 		newHero->Initialize(pRenderer, "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp");
-		newHero->Position = Vector2d(100.0f, 120.0f);
+		playerState.PlayerPosition = Vector2d(3.0f * worldState.TileSizeInPixels.X, 2.0f * worldState.TileSizeInPixels.Y);
+		
+		//newHero->Position = Vector2d(3.0f * worldState.TileSizeInPixels.X, 2.0f*worldState.TileSizeInPixels.Y);
 		SpriteList.push_back(newHero);
 		
 		

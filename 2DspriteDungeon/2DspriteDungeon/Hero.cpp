@@ -18,12 +18,14 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 	direction.Normalize();
 
 
-
-	Vector2d newPosition = Position;
+	Vector2d newPosition = playerState.PlayerPosition;
 	newPosition += direction * 200.0f * deltaSeconds;
-	if (true)
+
+	if (worldState.IsWalkableTile(newPosition))
 	{
-		Position = newPosition;
+		playerState.PlayerPosition = newPosition;
 	}
+
+	Position = playerState.PlayerPosition - Vector2d(Size.X * 0.5f, Size.Y * 0.85f); 
 
 }

@@ -34,10 +34,10 @@ void RoomRenderer::Render(SDL_Renderer* pRenderer, const PlayerState& playerStat
 		if (MyTexture != nullptr) //if nothing 
 		{
 		SDL_Rect destRect = { 
-			columnsRendered * (int)Size.X, 
-			rowsRendered * (int)Size.Y,
-			(int)Size.X, 
-			(int)Size.Y };
+			columnsRendered * (int)worldState.TileSizeInPixels.X, 
+			rowsRendered * (int)worldState.TileSizeInPixels.Y,
+			(int)worldState.TileSizeInPixels.X,
+			(int)worldState.TileSizeInPixels.Y };
 
 		SDL_RenderCopy(pRenderer, MyTexture, nullptr, &destRect);
 		}
