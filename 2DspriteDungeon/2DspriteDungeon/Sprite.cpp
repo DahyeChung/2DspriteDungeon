@@ -67,7 +67,7 @@ SDL_Texture* Sprite::LoadTexture(SDL_Renderer* pRenderer, const std::string& ima
 		return nullptr;
 	}
 
-	SDL_SetColorKey(pBmp, SDL_TRUE, SDL_MapRGB(pBmp->format, 255, 255, 253));
+	SDL_SetColorKey(pBmp, SDL_TRUE, SDL_MapRGB(pBmp->format, 0, 255, 0));
 	SDL_Texture* retTexture = SDL_CreateTextureFromSurface(pRenderer, pBmp);
 	SDL_FreeSurface(pBmp);
 

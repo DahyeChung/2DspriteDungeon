@@ -123,6 +123,12 @@ namespace DungeonGame
 		Vector2d Positon;
 	};
 
+	struct FoeData
+	{
+		bool Alive;
+		Vector2d Positon;
+	};
+
 	struct WorldState
 	{
 		int TilesPerRow;
@@ -132,6 +138,7 @@ namespace DungeonGame
 		Vector2d CameraPosition;
 
 		std::vector<ItemData> Items;
+		std::vector<FoeData> Foes; //enemy
 
 		bool IsWalkableTile(const Vector2d& inPosition);
 	};

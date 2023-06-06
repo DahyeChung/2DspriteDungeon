@@ -4,6 +4,7 @@
 #include "Hero.h"
 #include "RoomRenderer.h"
 #include "Item.h"
+#include "Foe.h"
 #include "HUD.h"
 #include "BG.h"
 
@@ -70,6 +71,11 @@ namespace DungeonGame
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
 		worldState.Items.push_back({ true,Item_BluePotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
 
+		worldState.Foes.push_back({ true, Vector2d(5.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
+		
+
+
+
 		BG* bg = new BG;
 		bg->Initialize(pRenderer, "Assets/Sprites/Backgrounds/background.bmp");
 		bg->Size = Vector2d(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -79,7 +85,7 @@ namespace DungeonGame
 			roomRenderer->InitializeRoomTiles(pRenderer,"Assets/Sprites/tiles/tile.bmp","Assets/Sprites/tiles/wall.bmp"); //floor and wall
 			SpriteList.push_back(roomRenderer);
 
-
+			//Items
 			for (unsigned int i = 0; i < worldState.Items.size(); ++i)
 			{
 				std::string itemFilepath = "Assets/Sprites/Items/redPotion.bmp";
@@ -98,6 +104,17 @@ namespace DungeonGame
 				newItem->Initialize(pRenderer, itemFilepath);
 				newItem->SetItemIndex(i);
 				SpriteList.push_back(newItem);
+			}
+
+			//Enemies
+			for (unsigned int i = 0; i < worldState.Foes.size(); ++i)
+			{
+				std::string foeFilepath = "Assets/Sprites/Enemy/Attack1_0.bmp";
+
+				Foe* newFoe = new Foe;
+				newFoe->Initialize(pRenderer, foeFilepath);
+				newFoe->SetFoeIndex(i);
+				SpriteList.push_back(newFoe);
 			}
 
 		
