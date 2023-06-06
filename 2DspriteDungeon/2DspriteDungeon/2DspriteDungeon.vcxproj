@@ -163,6 +163,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BG.cpp" />
     <ClCompile Include="GameCore.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BG.h" />
     <ClInclude Include="GameCore.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="HUD.h" />

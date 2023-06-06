@@ -5,6 +5,7 @@
 #include "RoomRenderer.h"
 #include "Item.h"
 #include "HUD.h"
+#include "BG.h"
 
 namespace DungeonGame
 {
@@ -68,6 +69,11 @@ namespace DungeonGame
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,7.0f * worldState.TileSizeInPixels.Y) });
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
 		worldState.Items.push_back({ true,Item_BluePotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
+
+		BG* bg = new BG;
+		bg->Initialize(pRenderer, "Assets/Sprites/Backgrounds/background.bmp");
+		bg->Size = Vector2d(WINDOW_WIDTH, WINDOW_HEIGHT);
+		SpriteList.push_back(bg);
 
 			RoomRenderer* roomRenderer = new RoomRenderer;
 			roomRenderer->InitializeRoomTiles(pRenderer,"Assets/Sprites/tiles/tile.bmp","Assets/Sprites/tiles/wall.bmp"); //floor and wall
