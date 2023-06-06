@@ -5,7 +5,9 @@ using namespace DungeonGame;
 
 void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& worldState)
 {
-	if (playerState.PlayerIsAlive)
+	bool playerIsAlive = playerState.PlayerHP > 0;
+
+	if (playerIsAlive)
 	{
 		Vector2d direction(0.0f, 0.0f);
 		if (playerState.WantsToGoUp)
@@ -32,6 +34,17 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 	worldState.CameraPosition = playerState.PlayerPosition;
 
 	Position = playerState.PlayerPosition - Vector2d(Size.X * 0.5f, Size.Y * 0.85f);
-	Visible = playerState.PlayerIsAlive;
+
+
+
+
+	if (playerState.InvincibilitySeconds > 0.0f)
+	{
+		playerState.InvincibilitySeconds -= deltaSeconds;
+		Visible = !Visible; //enemy 와 collide -> 투명무적상태 후 돌아옴
+
+	}
+	else
+		Visible = playerIsAlive; //damage blink 
 
 }

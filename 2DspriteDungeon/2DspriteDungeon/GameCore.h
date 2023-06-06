@@ -114,7 +114,8 @@ namespace DungeonGame
 
 		std::vector<ItemType> ItemInventory;
 
-		bool PlayerIsAlive;
+		int PlayerHP;
+		float InvincibilitySeconds;
 	};
 
 

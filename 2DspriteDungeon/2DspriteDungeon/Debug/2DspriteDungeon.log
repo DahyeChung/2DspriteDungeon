@@ -1,4 +1,7 @@
-﻿  GameCore.cpp
+﻿  Foe.cpp
+  GameCore.cpp
+  HUD.cpp
+E:\Git Projects\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(17,29): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   Hero.cpp
   코드를 생성하고 있습니다...
   2DspriteDungeon.vcxproj -> E:\Git Projects\2DspriteDungeon\2DspriteDungeon\Debug\2DspriteDungeon.exe

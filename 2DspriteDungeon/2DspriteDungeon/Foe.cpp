@@ -21,8 +21,13 @@ void Foe::Update(float deltaSeconds, PlayerState& playerState, WorldState& world
 		Vector2d vecToPlayer = currFoe.Positon - playerState.PlayerPosition;
 		if (vecToPlayer.GetLength() < 30.0f)
 		{
-			currFoe.Alive = false;
-			playerState.PlayerIsAlive = false;
+			//currFoe.Alive = false;
+			if (playerState.PlayerHP > 0 && playerState.InvincibilitySeconds <= 0.0f)
+			{
+				playerState.PlayerHP -= 1;
+				playerState.InvincibilitySeconds = 1.5f;
+			}
+			
 		}
 		vecToPlayer.Normalize(); 
 		vecToPlayer *= -1.0f;
