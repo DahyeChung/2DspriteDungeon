@@ -2,11 +2,12 @@
 
 using namespace DungeonGame;
 
-void HUD::InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath)
+void HUD::InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath, const std::string& gameOverFilepath)
 {
 	RedPotionTexture = LoadTexture(pRenderer, redPotionFilepath);
 	BluePotionTexture = LoadTexture(pRenderer, bluePotionFilepath);
 	HealthTexture = LoadTexture(pRenderer,healthFilepath);
+	GameOverTexture = LoadTexture(pRenderer, gameOverFilepath);
 }
 
 void HUD::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState, const Vector2d& baseTranslation)
@@ -59,4 +60,15 @@ void HUD::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const 
 			SDL_RenderCopy(pRenderer, MyTexture, nullptr, &destRect);
 		}
 	}
+
+	if (playerState.PlayerHP <= 0)
+	{
+		SDL_Rect destRect = {
+				300.0f,
+				50.0f,
+				600.0f,
+				620.0f };
+		SDL_RenderCopy(pRenderer, GameOverTexture, nullptr, &destRect);
+	}
 }
+

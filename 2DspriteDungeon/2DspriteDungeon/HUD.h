@@ -6,8 +6,7 @@ namespace DungeonGame
 	class HUD : public Sprite
 	{
 	public:
-		void InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath);
-
+		void InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath, const std::string& gameOverFilepath);
 		virtual void Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState, const Vector2d& baseTranslation);
 
 	private:
@@ -15,6 +14,8 @@ namespace DungeonGame
 		SDL_Texture* BluePotionTexture;
 
 		SDL_Texture* HealthTexture;
+
+		SDL_Texture* GameOverTexture;
 
 
 

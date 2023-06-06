@@ -143,6 +143,8 @@ namespace DungeonGame
 		std::vector<ItemData> Items;
 		std::vector<FoeData> Foes; //enemy
 
+		float SecondsSincePlayerDefeat;
+
 		bool IsWalkableTile(const Vector2d& inPosition);
 	};
 

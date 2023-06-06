@@ -13,6 +13,7 @@ namespace DungeonGame
 	std::vector<Sprite*> SpriteList; //everytime create sprites put it in this list
 	//Sprite testSprite; //스프라이트 여러개
 	//Sprite testSprite2;
+	
 
 	bool WorldState::IsWalkableTile(const Vector2d& inPosition) //Tile Collision
  	{
@@ -48,6 +49,8 @@ namespace DungeonGame
 		playerState.WantsToGoDown = false;
 		playerState.WantsToGoLeft = false;
 		playerState.WantsToGoRight = false;
+
+		worldState.SecondsSincePlayerDefeat = 0.0f;
 
 
 		worldState.TilesPerRow = 8; //num of tiles 
@@ -132,25 +135,10 @@ namespace DungeonGame
 		
 		//Item Inventory
 		HUD* newHUD = new HUD;
-		newHUD->InitializeHudSprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp", "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp"); //아이템,생명이미지
+		newHUD->InitializeHudSprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp", "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp", "Assets/Sprites/GameOver/ending.bmp"); //아이템,생명이미지,게임오버 이미지
 		SpriteList.push_back(newHUD);
 
-		/*
-		for (int i = 0; i < 200; ++i) 
-		{
-			//Sprite 200
-			Sprite* newSprite3 = new Sprite;
-			newSprite3->Initialize(pRenderer, "Assets/Sprites/Hero/Total/Idle/HeroKnight_1_11zon.bmp");
-			newSprite3->Position = Vector2d(100.0f + 16.0f * i, 320.0f + 4.0f * i );
-			SpriteList.push_back(newSprite3);
-		}
 		
-		*/
-
-
-
-
-	
 	}
 	void GetInput(PlayerState& playerState, WorldState& worldState)
 	{
@@ -235,6 +223,16 @@ namespace DungeonGame
 			SpriteList[i]->Update(deltaSeconds, playerState, worldState);
 		}
 		
+		//Game Over
+		if (playerState.PlayerHP <= 0)
+		{
+			worldState.SecondsSincePlayerDefeat += deltaSeconds;
+
+			if (worldState.SecondsSincePlayerDefeat > 3.0f)
+			{
+				playerState.HasFinishedGame = true;
+			}
+		}
 
 	}
 
