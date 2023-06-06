@@ -113,6 +113,8 @@ namespace DungeonGame
 		Vector2d PlayerPosition;
 
 		std::vector<ItemType> ItemInventory;
+
+		bool PlayerIsAlive;
 	};
 
 

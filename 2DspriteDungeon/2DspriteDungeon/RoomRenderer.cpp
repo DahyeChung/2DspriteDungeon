@@ -17,7 +17,7 @@ void RoomRenderer::Render(SDL_Renderer* pRenderer, const PlayerState& playerStat
 	{
 		char currentTile = worldState.Tiles[i];
 
-		//문자열을 bmp 이미지로 변환시키는 작업
+		//convert map char to bmp image
 		switch (currentTile)
 		{
 		case '#':

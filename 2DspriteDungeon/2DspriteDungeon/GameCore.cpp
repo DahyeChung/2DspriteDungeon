@@ -40,6 +40,8 @@ namespace DungeonGame
 	void InitializeGame(SDL_Renderer* pRenderer, PlayerState& playerState, WorldState& worldState)
 	{
 		playerState.HasFinishedGame = false;
+		playerState.PlayerIsAlive = true;
+
 
 		playerState.WantsToGoUp = false;
 		playerState.WantsToGoDown = false;
@@ -125,20 +127,15 @@ namespace DungeonGame
 		
 		//newHero->Position = Vector2d(3.0f * worldState.TileSizeInPixels.X, 2.0f*worldState.TileSizeInPixels.Y);
 		SpriteList.push_back(newHero);
+	
 		
-		
-		//Sprite 2
-		Sprite* newSprite2 = new Sprite;
-		newSprite2->Initialize(pRenderer, "test.bmp");
-		newSprite2->Position = Vector2d(100.0f, 220.0f);
-		SpriteList.push_back(newSprite2);
-
+		//Item Inventory
 		HUD* newHUD = new HUD;
 		newHUD->InitializeInventorySprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp");
 		SpriteList.push_back(newHUD);
 
 		/*
-		for (int i = 0; i < 200; ++i) //만약에 아주여러개 많이 만들려면? 테스트
+		for (int i = 0; i < 200; ++i) 
 		{
 			//Sprite 200
 			Sprite* newSprite3 = new Sprite;
