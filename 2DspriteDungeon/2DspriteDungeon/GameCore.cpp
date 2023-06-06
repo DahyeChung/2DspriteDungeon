@@ -4,6 +4,7 @@
 #include "Hero.h"
 #include "RoomRenderer.h"
 #include "Item.h"
+#include "HUD.h"
 
 namespace DungeonGame
 {
@@ -108,6 +109,10 @@ namespace DungeonGame
 		newSprite2->Initialize(pRenderer, "test.bmp");
 		newSprite2->Position = Vector2d(100.0f, 220.0f);
 		SpriteList.push_back(newSprite2);
+
+		HUD* newHUD = new HUD;
+		newHUD->InitializeInventorySprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp");
+		SpriteList.push_back(newHUD);
 
 		/*
 		for (int i = 0; i < 200; ++i) //만약에 아주여러개 많이 만들려면? 테스트
