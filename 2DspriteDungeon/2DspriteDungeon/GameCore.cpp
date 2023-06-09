@@ -136,7 +136,7 @@ namespace DungeonGame
 					itemFilepath = "Assets/Sprites/Items/bluePotion.bmp";
 					break;				
 				case Item_KEY:
-					itemFilepath = "열쇠이미지경로";
+					itemFilepath = "Assets/Sprites/Items/key.bmp";
 					break;
 
 				}
@@ -180,7 +180,7 @@ namespace DungeonGame
 		
 		//Item Inventory
 		HUD* newHUD = new HUD;
-		newHUD->InitializeHudSprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp","Itme", "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp", "Assets/Sprites/GameOver/ending.bmp", "Assets/Sprites/GameOver/win.bmp" ); 
+		newHUD->InitializeHudSprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp","Assets/Sprites/Items/key.bmp", "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp", "Assets/Sprites/GameOver/ending.bmp", "Assets/Sprites/GameOver/win.bmp" ); 
 		SpriteList.push_back(newHUD);
 
 		

@@ -2,7 +2,7 @@
 
 using namespace DungeonGame;
 
-void HUD::InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath, const std::string& gameOverFilepath, const std::string& victoryFilepath, const std::string& keyFilepath)
+void HUD::InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& keyFilepath, const std::string& healthFilepath, const std::string& gameOverFilepath, const std::string& victoryFilepath)
 {
 	RedPotionTexture = LoadTexture(pRenderer, redPotionFilepath);
 	BluePotionTexture = LoadTexture(pRenderer, bluePotionFilepath);
@@ -46,6 +46,9 @@ void HUD::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const 
 			break;
 		case Item_BluePotion:
 			MyTexture = BluePotionTexture;
+			break;
+		case Item_KEY:
+			MyTexture = KeyTexture;
 			break;
 		default:
 			MyTexture = nullptr;
