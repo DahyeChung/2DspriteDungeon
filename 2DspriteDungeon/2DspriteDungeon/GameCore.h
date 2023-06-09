@@ -147,7 +147,13 @@ namespace DungeonGame
 	struct FoeData
 	{
 		bool Alive;
-		Vector2d Positon;
+		Vector2d Position;
+	};
+
+	struct DoorData
+	{
+		bool Alive;
+		Vector2d Position;
 	};
 
 	struct WorldState
@@ -160,6 +166,7 @@ namespace DungeonGame
 
 		std::vector<ItemData> Items;
 		std::vector<FoeData> Foes; //enemy
+		std::vector<DoorData> Doors; 
 
 		float SecondsSincePlayerDefeat;
 

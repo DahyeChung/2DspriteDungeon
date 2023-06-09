@@ -24,7 +24,7 @@ void Projectile::Update(float deltaSeconds, PlayerState& playerState, WorldState
 		for (int i = 0; i < worldState.Foes.size(); ++i)
 		{
 			FoeData& currFoe = worldState.Foes[i];
-			Vector2d vecToFoe = currFoe.Positon - currProjectile.Position;
+			Vector2d vecToFoe = currFoe.Position - currProjectile.Position;
 			if (vecToFoe.GetLength() < 30.0f)
 			{
 				currProjectile.Alive = false;

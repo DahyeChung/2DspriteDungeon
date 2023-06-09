@@ -1,12 +1,8 @@
-﻿  HUD.cpp
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(20,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(72,5): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(72,5): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(73,5): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(73,5): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(74,5): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(74,5): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(75,5): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(75,5): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+﻿  Door.cpp
+C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\Door.cpp(18,21): warning C4018: '<': signed/unsigned mismatch
+  GameCore.cpp
+C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\GameCore.cpp(23,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\GameCore.cpp(37,21): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   2DspriteDungeon.vcxproj -> C:\Users\choco\Desktop\Git\2DspriteDungeon\2DspriteDungeon\Debug\2DspriteDungeon.exe
   0개 파일이 복사되었습니다.

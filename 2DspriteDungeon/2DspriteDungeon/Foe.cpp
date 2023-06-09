@@ -17,7 +17,7 @@ void Foe::Update(float deltaSeconds, PlayerState& playerState, WorldState& world
 	if (currFoe.Alive && !playerState.PlayerHasWon()) //ÃßÀû
 	{
 		//enemy chase
-		Vector2d vecToPlayer = currFoe.Positon - playerState.PlayerPosition;
+		Vector2d vecToPlayer = currFoe.Position - playerState.PlayerPosition;
 		if (vecToPlayer.GetLength() < 30.0f)
 		{
 			//currFoe.Alive = false;
@@ -30,12 +30,12 @@ void Foe::Update(float deltaSeconds, PlayerState& playerState, WorldState& world
 		}
 		vecToPlayer.Normalize(); 
 		vecToPlayer *= -1.0f;
-		currFoe.Positon += vecToPlayer * FOE_MOVEMENT_SPEED * deltaSeconds;
+		currFoe.Position += vecToPlayer * FOE_MOVEMENT_SPEED * deltaSeconds;
 		AnimatedMultiplier = 6.0f;
 
 	}
 
-	Position = currFoe.Positon - Vector2d(Size.X * 0.5f, Size.Y * 0.5f);
+	Position = currFoe.Position - Vector2d(Size.X * 0.5f, Size.Y * 0.5f);
 	Visible = currFoe.Alive;
 
 	AnimatedSprite::Update(deltaSeconds, playerState, worldState);

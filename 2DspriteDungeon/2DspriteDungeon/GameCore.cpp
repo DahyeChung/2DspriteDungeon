@@ -8,6 +8,7 @@
 #include "HUD.h"
 #include "BG.h"
 #include "Projectile.h"
+#include "Door.h"
 
 namespace DungeonGame
 {
@@ -33,6 +34,17 @@ namespace DungeonGame
 
 	bool WorldState::IsWalkableTile(const Vector2d& inPosition) //Tile Collision
  	{
+		for (int i = 0; i < Doors.size(); ++i)
+		{
+			if (Doors[i].Alive)
+			{
+				Vector2d vecToDoor = Doors[i].Position - inPosition;
+				if (vecToDoor.GetLength() < 30.0f)
+					return false;
+			}
+
+		}
+
 
 		int column = (int)(inPosition.X / TileSizeInPixels.X);
 		int row = (int)(inPosition.Y / TileSizeInPixels.Y);
@@ -41,8 +53,6 @@ namespace DungeonGame
 		int index = row * TilesPerRow + column;
 		if (index >= 0 && index < (int)Tiles.size())
 			currentTile = Tiles[index];
-
-		
 
 		return currentTile == '.';
 	}
@@ -109,6 +119,8 @@ namespace DungeonGame
 		worldState.Items.push_back({ true,Item_BluePotion, Vector2d(7.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
 
 		worldState.Foes.push_back({ true, Vector2d(5.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
+
+		worldState.Doors.push_back({ true, Vector2d(5.0f * worldState.TileSizeInPixels.X,6.0f * worldState.TileSizeInPixels.Y) });
 		
 
 
@@ -154,6 +166,15 @@ namespace DungeonGame
 				newFoe->Initialize(pRenderer, "Assets/Sprites/Enemy/Attack1_0.bmp","Assets/Sprites/Enemy/AttackMain2.bmp");
 				newFoe->SetFoeIndex(i);
 				SpriteList.push_back(newFoe);
+			}
+
+			//Door
+			for (unsigned int i = 0; i < worldState.Doors.size(); ++i)
+			{
+				Door* newDoor = new Door;
+				newDoor->Initialize(pRenderer, "Assets/Sprites/Tiles/door.bmp");
+				newDoor->SetDoorIndex(i);
+				SpriteList.push_back(newDoor);
 			}
 
 		
