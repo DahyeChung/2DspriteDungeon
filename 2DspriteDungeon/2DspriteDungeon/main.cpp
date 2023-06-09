@@ -14,6 +14,10 @@ int main()
         WINDOW_WIDTH, WINDOW_HEIGHT, //Pixel width * height 
         SDL_WINDOW_SHOWN); // Show the window
 
+    //Game Icon
+    SDL_Surface* pSurface = SDL_LoadBMP("icon.bmp"); SDL_SetWindowIcon(pWindow, pSurface);
+
+
     SDL_Renderer* pRenderer = SDL_CreateRenderer(pWindow, -1,
         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 

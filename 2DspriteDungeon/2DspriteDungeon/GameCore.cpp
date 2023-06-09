@@ -9,7 +9,11 @@
 #include "BG.h"
 #include "Projectile.h"
 #include "Door.h"
+#include "Windows.h"
+#include <iostream>
 
+//Sound Reference
+//OpenGameArt.ORG : https://opengameart.org/content/gothic-sound
 namespace DungeonGame
 {
 	std::vector<Sprite*> SpriteList;
@@ -66,6 +70,7 @@ namespace DungeonGame
 
 	void InitializeGame(SDL_Renderer* pRenderer, PlayerState& playerState, WorldState& worldState)
 	{
+		PlaySound(TEXT("Assets/Sounds/2Ddungeon.wav"), NULL, SND_ASYNC);
 		playerState.HasFinishedGame = false;
 		playerState.PlayerHP = 5;
 		playerState.InvincibilitySeconds = 0.0f;
@@ -184,7 +189,7 @@ namespace DungeonGame
 			{
 				Door* newDoor = new Door;
 				if (worldState.Doors[i].FinalDoor)
-					newDoor->Initialize(pRenderer, "Assets/Sprites/Tiles/finalDoor.bmp");
+					newDoor->Initialize(pRenderer, "Assets/Sprites/Tiles/oor.bmp");
 				else
 					newDoor->Initialize(pRenderer, "Assets/Sprites/Tiles/door.bmp");
 				newDoor->SetDoorIndex(i);
