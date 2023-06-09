@@ -1,4 +1,5 @@
-﻿  Foe.cpp
-E:\Git Projects\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\Foe.cpp(34,32): warning C4018: '>=': signed 또는 unsigned가 일치하지 않습니다.
+﻿  Door.cpp
+E:\Git Projects\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\Door.cpp(22,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+E:\Git Projects\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\Door.cpp(40,22): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   2DspriteDungeon.vcxproj -> E:\Git Projects\2DspriteDungeon\2DspriteDungeon\Debug\2DspriteDungeon.exe
   0개 파일이 복사되었습니다.

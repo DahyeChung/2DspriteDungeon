@@ -165,6 +165,7 @@ namespace DungeonGame
 	struct DoorData
 	{
 		bool Alive;
+		bool FinalDoor;
 		Vector2d Position;
 	};
 

@@ -131,7 +131,8 @@ namespace DungeonGame
 		}
 
 
-		worldState.Doors.push_back({ true, Vector2d(5.0f * worldState.TileSizeInPixels.X,6.0f * worldState.TileSizeInPixels.Y) });
+		worldState.Doors.push_back({ true,false, Vector2d(5.0f * worldState.TileSizeInPixels.X,6.0f * worldState.TileSizeInPixels.Y) });
+		worldState.Doors.push_back({ true,true, Vector2d(3.0f * worldState.TileSizeInPixels.X,6.0f * worldState.TileSizeInPixels.Y) });
 
 
 
@@ -182,7 +183,10 @@ namespace DungeonGame
 			for (unsigned int i = 0; i < worldState.Doors.size(); ++i)
 			{
 				Door* newDoor = new Door;
-				newDoor->Initialize(pRenderer, "Assets/Sprites/Tiles/door.bmp");
+				if (worldState.Doors[i].FinalDoor)
+					newDoor->Initialize(pRenderer, "Assets/Sprites/Tiles/finalDoor.bmp");
+				else
+					newDoor->Initialize(pRenderer, "Assets/Sprites/Tiles/door.bmp");
 				newDoor->SetDoorIndex(i);
 				SpriteList.push_back(newDoor);
 			}

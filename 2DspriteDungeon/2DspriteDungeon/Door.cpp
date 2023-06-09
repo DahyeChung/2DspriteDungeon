@@ -15,14 +15,38 @@ void Door::Update(float deltaSeconds, PlayerState& playerState, WorldState& worl
 	if (currDoor.Alive)
 	{
 		bool playerHasKey = false;
-		for (int i = 0; i < playerState.ItemInventory.size(); ++i)
+		if (currDoor.FinalDoor)
 		{
-			if (playerState.ItemInventory[i] == Item_KEY)
+			int redPotionCount = 0;
+			int bluePotionCount = 0;
+			for (int i = 0; i < playerState.ItemInventory.size(); ++i)
 			{
+				if (playerState.ItemInventory[i] == Item_RedPotion)
+				{
+					redPotionCount++;
+				}
+				else if (playerState.ItemInventory[i] == Item_BluePotion)
+				{
+					bluePotionCount++;
+				}
+			}
+
+			if (redPotionCount >= 2 && bluePotionCount >= 1)
 				playerHasKey = true;
-				break;
+		}
+
+		else 
+		{
+			for (int i = 0; i < playerState.ItemInventory.size(); ++i)
+			{
+				if (playerState.ItemInventory[i] == Item_KEY)
+				{
+					playerHasKey = true;
+					break;
+				}
 			}
 		}
+		
 
 		if (playerHasKey)
 		{
