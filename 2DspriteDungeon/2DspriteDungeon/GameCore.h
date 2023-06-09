@@ -102,6 +102,14 @@ namespace DungeonGame
 		Item_KEY
 	};
 
+
+	enum FoeBehavior
+	{
+		FoeBehavior_SEEK_PLAYER,
+		FoeBehavior_PATROL
+
+	};
+
 	struct ProjectileData
 	{
 		bool Alive;
@@ -147,7 +155,11 @@ namespace DungeonGame
 	struct FoeData
 	{
 		bool Alive;
+		FoeBehavior Behavior;
 		Vector2d Position;
+
+		int NavPointIndex;
+		std::vector<Vector2d> NavigationPoints;
 	};
 
 	struct DoorData

@@ -12,7 +12,7 @@ namespace DungeonGame
 
 	private:
 		int FoeIndex;
-
+		
 	};
 
 }

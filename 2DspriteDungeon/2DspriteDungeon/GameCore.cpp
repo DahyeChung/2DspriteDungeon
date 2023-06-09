@@ -118,10 +118,20 @@ namespace DungeonGame
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(7.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
 		worldState.Items.push_back({ true,Item_BluePotion, Vector2d(7.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
 
-		worldState.Foes.push_back({ true, Vector2d(5.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
+		worldState.Foes.push_back({ true, FoeBehavior_SEEK_PLAYER,Vector2d(5.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
+
+		{
+			FoeData myFoe = { true, FoeBehavior_PATROL, Vector2d(6.0f * worldState.TileSizeInPixels.X, 7.0f * worldState.TileSizeInPixels.Y) };
+			myFoe.NavPointIndex = 0;
+			myFoe.NavigationPoints.push_back(Vector2d(Vector2d(9.0f * worldState.TileSizeInPixels.X, 7.0f * worldState.TileSizeInPixels.Y)));
+			myFoe.NavigationPoints.push_back(Vector2d(Vector2d(9.0f * worldState.TileSizeInPixels.X, 3.0f * worldState.TileSizeInPixels.Y)));
+			myFoe.NavigationPoints.push_back(Vector2d(Vector2d(2.0f * worldState.TileSizeInPixels.X, 3.0f * worldState.TileSizeInPixels.Y)));
+			worldState.Foes.push_back(myFoe);
+
+		}
+
 
 		worldState.Doors.push_back({ true, Vector2d(5.0f * worldState.TileSizeInPixels.X,6.0f * worldState.TileSizeInPixels.Y) });
-		
 
 
 
