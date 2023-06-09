@@ -2,10 +2,11 @@
 
 using namespace DungeonGame;
 
-void HUD::InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath, const std::string& gameOverFilepath, const std::string& victoryFilepath)
+void HUD::InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath, const std::string& gameOverFilepath, const std::string& victoryFilepath, const std::string& keyFilepath)
 {
 	RedPotionTexture = LoadTexture(pRenderer, redPotionFilepath);
 	BluePotionTexture = LoadTexture(pRenderer, bluePotionFilepath);
+	KeyTexture = LoadTexture(pRenderer, keyFilepath);
 	HealthTexture = LoadTexture(pRenderer,healthFilepath);
 	GameOverTexture = LoadTexture(pRenderer, gameOverFilepath);
 	VictoryTexture = LoadTexture(pRenderer, victoryFilepath);

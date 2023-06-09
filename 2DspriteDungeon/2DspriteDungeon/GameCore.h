@@ -98,7 +98,8 @@ namespace DungeonGame
 	enum ItemType
 	{
 		Item_RedPotion,
-		Item_BluePotion
+		Item_BluePotion,
+		Item_KEY
 	};
 
 	struct ProjectileData

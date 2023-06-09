@@ -97,6 +97,8 @@ namespace DungeonGame
 			"#......#"
 			"#..##..#"
 			" ##  ## ";
+
+		worldState.Items.push_back({ true,Item_KEY, Vector2d(2.0f * worldState.TileSizeInPixels.X,5.0f * worldState.TileSizeInPixels.Y) });
 		
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,7.0f * worldState.TileSizeInPixels.Y) });
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
@@ -132,7 +134,11 @@ namespace DungeonGame
 					break;
 				case Item_BluePotion:
 					itemFilepath = "Assets/Sprites/Items/bluePotion.bmp";
+					break;				
+				case Item_KEY:
+					itemFilepath = "열쇠이미지경로";
 					break;
+
 				}
 
 				Item* newItem = new Item;
@@ -174,7 +180,7 @@ namespace DungeonGame
 		
 		//Item Inventory
 		HUD* newHUD = new HUD;
-		newHUD->InitializeHudSprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp", "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp", "Assets/Sprites/GameOver/ending.bmp", "Assets/Sprites/GameOver/win.bmp" ); 
+		newHUD->InitializeHudSprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp","Itme", "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp", "Assets/Sprites/GameOver/ending.bmp", "Assets/Sprites/GameOver/win.bmp" ); 
 		SpriteList.push_back(newHUD);
 
 		
