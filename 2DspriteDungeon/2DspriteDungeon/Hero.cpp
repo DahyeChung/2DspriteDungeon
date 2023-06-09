@@ -16,19 +16,23 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 
 	if (playerIsAlive)
 	{
-		
-
 		Vector2d direction(0.0f, 0.0f);
-		if (playerState.WantsToGoUp)
-			direction.Y = -1.0f;
-		else if (playerState.WantsToGoDown)
-			direction.Y = 1.0f;
-		if (playerState.WantsToGoLeft)
-			direction.X = -1.0f;
-		else if (playerState.WantsToGoRight)
-			direction.X = 1.0f;
 
-		direction.Normalize();
+		if (playerState.ShotCooldownSeconds <= 0.375f)
+		{
+			if (playerState.WantsToGoUp)
+				direction.Y = -1.0f;
+			else if (playerState.WantsToGoDown)
+				direction.Y = 1.0f;
+			if (playerState.WantsToGoLeft)
+				direction.X = -1.0f;
+			else if (playerState.WantsToGoRight)
+				direction.X = 1.0f;
+
+			direction.Normalize();
+
+		}
+
 
 		if (direction != Vector2d(0.0f, 0.0f))
 		{
@@ -86,7 +90,7 @@ void Hero::Shoot(PlayerState& playerState, const Vector2d& direction)
 				playerState.Projectiles[i].Direction = direction;
 				playerState.Projectiles[i].Position = playerState.PlayerPosition;
 
-				playerState.ShotCooldownSeconds = 0.25f;
+				playerState.ShotCooldownSeconds = 0.5f;
 				break;
 			}
 		}

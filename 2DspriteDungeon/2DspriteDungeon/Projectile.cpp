@@ -17,9 +17,11 @@ void Projectile::Update(float deltaSeconds, PlayerState& playerState, WorldState
 
 	if (currProjectile.Alive)
 	{
-		Vector2d newPosition = currProjectile.Position;
-		newPosition += currProjectile.Direction * 500.0f * deltaSeconds;
-		currProjectile.Position = newPosition;
+		//Vector2d newPosition = currProjectile.Position;
+		//newPosition += currProjectile.Direction * 500.0f * deltaSeconds;
+		//currProjectile.Position = newPosition;
+		
+		currProjectile.Position = playerState.PlayerPosition + currProjectile.Direction * 32.0f; 
 
 		for (int i = 0; i < worldState.Foes.size(); ++i)
 		{
@@ -27,13 +29,13 @@ void Projectile::Update(float deltaSeconds, PlayerState& playerState, WorldState
 			Vector2d vecToFoe = currFoe.Position - currProjectile.Position;
 			if (vecToFoe.GetLength() < 30.0f)
 			{
-				currProjectile.Alive = false;
+				//currProjectile.Alive = false;
 				currFoe.Alive = false;
 				break;
 			}
 		}
 		currProjectile.Lifetime += deltaSeconds;
-		if (currProjectile.Lifetime > 0.5f)
+		if (currProjectile.Lifetime > 0.125f)
 		{
 			currProjectile.Alive = false;
 		}
