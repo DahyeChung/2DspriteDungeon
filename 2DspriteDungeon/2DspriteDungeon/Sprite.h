@@ -10,7 +10,7 @@ namespace DungeonGame
 	{
 	public : 
 		Sprite();
-		virtual void Initialize(SDL_Renderer* pRenderer, const std::string& imageFilepath);
+		virtual void Initialize(SDL_Renderer* pRenderer, const std::string& image1Filepath);
 		virtual void Update(float deltaSeconds, PlayerState& playerState, WorldState& worldState);
 		virtual void Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState, const Vector2d& baseTranslation);
 		virtual void Cleanup();

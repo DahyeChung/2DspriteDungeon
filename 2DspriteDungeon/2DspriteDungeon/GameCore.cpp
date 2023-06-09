@@ -155,7 +155,7 @@ namespace DungeonGame
 		
 		//Sprite 1 : hero
 		Hero* newHero = new Hero;
-		newHero->Initialize(pRenderer, "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp");
+		newHero->Initialize(pRenderer, "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp", "Assets/Sprites/Hero/Total/Walk/HeroKnight_16_11zon.bmp");
 		playerState.PlayerPosition = Vector2d(3.0f * worldState.TileSizeInPixels.X, 2.0f * worldState.TileSizeInPixels.Y);
 		
 		//newHero->Position = Vector2d(3.0f * worldState.TileSizeInPixels.X, 2.0f*worldState.TileSizeInPixels.Y);
