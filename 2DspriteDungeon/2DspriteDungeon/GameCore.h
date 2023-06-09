@@ -116,6 +116,8 @@ namespace DungeonGame
 
 		int PlayerHP;
 		float InvincibilitySeconds;
+
+		bool PlayerHasWon() const;
 	};
 
 

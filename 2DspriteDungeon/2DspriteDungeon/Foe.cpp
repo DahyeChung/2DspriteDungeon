@@ -13,9 +13,10 @@ void Foe::SetFoeIndex(int newIndex)
 void Foe::Update(float deltaSeconds, PlayerState& playerState, WorldState& worldState)
 {
 	const float FOE_MOVEMENT_SPEED = 100.0f; //enemy speed
+
 	FoeData& currFoe = worldState.Foes[FoeIndex];
 
-	if (currFoe.Alive)
+	if (currFoe.Alive && !playerState.PlayerHasWon()) //ÃßÀû
 	{
 		//enemy chase
 		Vector2d vecToPlayer = currFoe.Positon - playerState.PlayerPosition;

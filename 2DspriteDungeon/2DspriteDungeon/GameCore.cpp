@@ -10,9 +10,24 @@
 
 namespace DungeonGame
 {
-	std::vector<Sprite*> SpriteList; //everytime create sprites put it in this list
-	//Sprite testSprite; //스프라이트 여러개
-	//Sprite testSprite2;
+	std::vector<Sprite*> SpriteList;
+
+		//win conditions
+	bool PlayerState::PlayerHasWon() const
+	{
+		int numberOfRedPotions = 0;
+		int numberOfBluePotions = 0;
+
+		for (int i = 0; i < ItemInventory.size(); ++i)
+		{
+			if (ItemInventory[i] == Item_RedPotion)
+				numberOfRedPotions++;
+			else if (ItemInventory[i] == Item_BluePotion)
+				numberOfBluePotions++;
+		}
+
+		return numberOfRedPotions == 3 && numberOfBluePotions == 2;
+	}
 	
 
 	bool WorldState::IsWalkableTile(const Vector2d& inPosition) //Tile Collision
@@ -77,6 +92,10 @@ namespace DungeonGame
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
 		worldState.Items.push_back({ true,Item_BluePotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
 
+		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(7.0f * worldState.TileSizeInPixels.X,7.0f * worldState.TileSizeInPixels.Y) });
+		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(7.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
+		worldState.Items.push_back({ true,Item_BluePotion, Vector2d(7.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
+
 		worldState.Foes.push_back({ true, Vector2d(5.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
 		
 
@@ -135,7 +154,7 @@ namespace DungeonGame
 		
 		//Item Inventory
 		HUD* newHUD = new HUD;
-		newHUD->InitializeHudSprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp", "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp", "Assets/Sprites/GameOver/ending.bmp"); //아이템,생명이미지,게임오버 이미지
+		newHUD->InitializeHudSprites(pRenderer, "Assets/Sprites/Items/redPotion.bmp", "Assets/Sprites/Items/bluePotion.bmp", "Assets/Sprites/Hero/Total/Idle/HeroKnight_0_11zon.bmp", "Assets/Sprites/GameOver/ending.bmp", "Assets/Sprites/GameOver/win.bmp" ); 
 		SpriteList.push_back(newHUD);
 
 		
@@ -224,7 +243,7 @@ namespace DungeonGame
 		}
 		
 		//Game Over
-		if (playerState.PlayerHP <= 0)
+		if (playerState.PlayerHP <= 0 || playerState.PlayerHasWon())
 		{
 			worldState.SecondsSincePlayerDefeat += deltaSeconds;
 
@@ -233,6 +252,8 @@ namespace DungeonGame
 				playerState.HasFinishedGame = true;
 			}
 		}
+
+
 
 	}
 

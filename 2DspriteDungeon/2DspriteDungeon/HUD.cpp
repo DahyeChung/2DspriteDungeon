@@ -2,12 +2,13 @@
 
 using namespace DungeonGame;
 
-void HUD::InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath, const std::string& gameOverFilepath)
+void HUD::InitializeHudSprites(SDL_Renderer* pRenderer, const std::string& redPotionFilepath, const std::string& bluePotionFilepath, const std::string& healthFilepath, const std::string& gameOverFilepath, const std::string& victoryFilepath)
 {
 	RedPotionTexture = LoadTexture(pRenderer, redPotionFilepath);
 	BluePotionTexture = LoadTexture(pRenderer, bluePotionFilepath);
 	HealthTexture = LoadTexture(pRenderer,healthFilepath);
 	GameOverTexture = LoadTexture(pRenderer, gameOverFilepath);
+	VictoryTexture = LoadTexture(pRenderer, victoryFilepath);
 }
 
 void HUD::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const WorldState& worldState, const Vector2d& baseTranslation)
@@ -54,21 +55,21 @@ void HUD::Render(SDL_Renderer* pRenderer, const PlayerState& playerState, const 
 		{
 			SDL_Rect destRect = {
 				(int)(16.0f + 48.0f * i),
-				(int)32.0f,
+				(int)96.0f,
 				(int)Size.X,
 				(int)Size.Y };
 			SDL_RenderCopy(pRenderer, MyTexture, nullptr, &destRect);
 		}
 	}
 
-	if (playerState.PlayerHP <= 0)
+	if (playerState.PlayerHasWon())
 	{
 		SDL_Rect destRect = {
 				300.0f,
 				50.0f,
 				600.0f,
 				620.0f };
-		SDL_RenderCopy(pRenderer, GameOverTexture, nullptr, &destRect);
+		SDL_RenderCopy(pRenderer, VictoryTexture, nullptr, &destRect);
 	}
 }
 
