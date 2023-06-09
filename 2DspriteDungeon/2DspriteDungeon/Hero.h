@@ -9,7 +9,9 @@ namespace DungeonGame
 		virtual void Update(float deltaSeconds, PlayerState& playerState, WorldState& worldState);
 
 	private: 
-		void Shoot(PlayerState& playerState);
+		void Shoot(PlayerState& playerState, const Vector2d& direction);
+
+
 	};
 
 }

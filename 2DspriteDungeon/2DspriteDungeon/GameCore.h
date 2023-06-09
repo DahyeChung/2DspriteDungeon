@@ -105,6 +105,7 @@ namespace DungeonGame
 	{
 		bool Alive;
 		float Lifetime;
+		Vector2d Direction;
 		Vector2d Position;
 
 	};
@@ -123,6 +124,7 @@ namespace DungeonGame
 		float ShotCooldownSeconds;
 
 		Vector2d PlayerPosition;
+		Vector2d PreviousDirection;
 
 		std::vector<ItemType> ItemInventory;
 		std::vector<ProjectileData> Projectiles;

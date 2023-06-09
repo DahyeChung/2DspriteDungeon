@@ -60,6 +60,7 @@ namespace DungeonGame
 		playerState.PlayerHP = 5;
 		playerState.InvincibilitySeconds = 0.0f;
 		playerState.ShotCooldownSeconds = 0.0f;
+		playerState.PreviousDirection = Vector2d(1.0f, 0.0f);
 
 
 		playerState.WantsToGoUp = false;
@@ -69,9 +70,9 @@ namespace DungeonGame
 		playerState.WantsToShoot = false;
 
 		//shoot
-		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(144.0f,72.0f)});
-		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(144.0f,144.0f)});
-		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(144.0f,200.0f)});
+		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(1.0f, 0.0f), Vector2d(144.0f,72.0f)});
+		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(1.0f, 0.0f), Vector2d(144.0f,144.0f)});
+		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(1.0f, 0.0f), Vector2d(144.0f,200.0f)});
 
 
 		worldState.SecondsSincePlayerDefeat = 0.0f;

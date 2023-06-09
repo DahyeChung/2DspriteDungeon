@@ -17,41 +17,21 @@ void Projectile::Update(float deltaSeconds, PlayerState& playerState, WorldState
 
 	if (currProjectile.Alive)
 	{
-		/*
-		Vector2d vecToPlayer = currProjectile.Positon - playerState.PlayerPosition;
-		if (vecToPlayer.GetLength() < 30.0f)
-		{
-			currProjectile.Alive = false;
-
-			playerState.ProjectileInventory.push_back(currProjectile.Type);
-
-		}
-		/*
-		vecToPlayer.Normalize(); //Projectile move away from the player //AI Move To 로 활용가능
-		currProjectile.Positon += vecToPlayer * -50.0f * deltaSeconds;
-		
-
-		if (vecToPlayer.GetLength() < 100.0f)
-		{
-			vecToPlayer.Normalize();
-
-			Vector2d newPosition = currProjectile.Positon;
-			newPosition += vecToPlayer * -50.0f * deltaSeconds;
-
-			if (worldState.IsWalkableTile(newPosition))
-			{
-				currProjectile.Positon = newPosition;
-			}
-		}
-		*/
-
-		Vector2d direction(1.0f, 0.0f);
-		direction.Normalize();
-
 		Vector2d newPosition = currProjectile.Position;
-		newPosition += direction * 500.0f * deltaSeconds;
+		newPosition += currProjectile.Direction * 500.0f * deltaSeconds;
 		currProjectile.Position = newPosition;
 
+		for (int i = 0; i < worldState.Foes.size(); ++i)
+		{
+			FoeData& currFoe = worldState.Foes[i];
+			Vector2d vecToFoe = currFoe.Positon - currProjectile.Position;
+			if (vecToFoe.GetLength() < 30.0f)
+			{
+				currProjectile.Alive = false;
+				currFoe.Alive = false;
+				break;
+			}
+		}
 		currProjectile.Lifetime += deltaSeconds;
 		if (currProjectile.Lifetime > 0.5f)
 		{
