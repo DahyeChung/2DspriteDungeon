@@ -1,3 +1,24 @@
-﻿  Foe.cpp
+﻿  BG.cpp
+  Foe.cpp
+  GameCore.cpp
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\GameCore.cpp(22,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  HUD.cpp
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(19,29): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(68,5): warning C4838: 'float'에서 'int'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(68,5): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(69,5): warning C4838: 'float'에서 'int'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(69,5): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(70,5): warning C4838: 'float'에서 'int'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(70,5): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(71,5): warning C4838: 'float'에서 'int'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\HUD.cpp(71,5): warning C4244: '초기화 중': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Hero.cpp
+C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\2DspriteDungeon\Hero.cpp(68,21): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  Item.cpp
+  Projectile.cpp
+  RoomRenderer.cpp
+  Sprite.cpp
+  main.cpp
+  코드를 생성하고 있습니다...
   2DspriteDungeon.vcxproj -> C:\Users\heebin\Desktop\새 폴더\2DspriteDungeon\2DspriteDungeon\Debug\2DspriteDungeon.exe
   0개 파일이 복사되었습니다.

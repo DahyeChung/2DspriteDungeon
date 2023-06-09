@@ -7,8 +7,19 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 {
 	bool playerIsAlive = playerState.PlayerHP > 0;
 
+	playerState.ShotCooldownSeconds -= deltaSeconds;
+	if (playerState.ShotCooldownSeconds < 0.0f)
+	{
+		playerState.ShotCooldownSeconds = 0.0f;
+	}
+
 	if (playerIsAlive)
 	{
+		if (playerState.WantsToShoot)
+		{
+			Shoot(playerState);
+		}
+
 		Vector2d direction(0.0f, 0.0f);
 		if (playerState.WantsToGoUp)
 			direction.Y = -1.0f;
@@ -46,5 +57,26 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 	}
 	else
 		Visible = playerIsAlive; //damage blink 
+
+}
+
+void Hero::Shoot(PlayerState& playerState)
+{
+	if (playerState.ShotCooldownSeconds <= 0.0f)
+	{
+
+		for (int i = 0; i < playerState.Projectiles.size(); ++i)
+		{
+			if (!playerState.Projectiles[i].Alive)
+			{
+				playerState.Projectiles[i].Alive = true;
+				playerState.Projectiles[i].Lifetime = 0.0f;
+				playerState.Projectiles[i].Position = playerState.PlayerPosition;
+
+				playerState.ShotCooldownSeconds = 0.25f;
+				break;
+			}
+		}
+	}
 
 }

@@ -101,6 +101,15 @@ namespace DungeonGame
 		Item_BluePotion
 	};
 
+	struct ProjectileData
+	{
+		bool Alive;
+		float Lifetime;
+		Vector2d Position;
+
+	};
+
+
 	struct PlayerState
 	{
 		bool HasFinishedGame;
@@ -109,10 +118,14 @@ namespace DungeonGame
 		bool WantsToGoDown;
 		bool WantsToGoLeft;
 		bool WantsToGoRight;
+		bool WantsToShoot;
+
+		float ShotCooldownSeconds;
 
 		Vector2d PlayerPosition;
 
 		std::vector<ItemType> ItemInventory;
+		std::vector<ProjectileData> Projectiles;
 
 		int PlayerHP;
 		float InvincibilitySeconds;
@@ -125,7 +138,7 @@ namespace DungeonGame
 	{
 		bool Alive;
 		ItemType Type;
-		Vector2d Positon;
+		Vector2d Position;
 	};
 
 	struct FoeData

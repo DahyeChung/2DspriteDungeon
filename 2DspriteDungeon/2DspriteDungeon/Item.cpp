@@ -17,7 +17,7 @@ void Item::Update(float deltaSeconds, PlayerState& playerState, WorldState& worl
 
 	if (currItem.Alive)
 	{
-		Vector2d vecToPlayer = currItem.Positon - playerState.PlayerPosition;
+		Vector2d vecToPlayer = currItem.Position - playerState.PlayerPosition;
 		if (vecToPlayer.GetLength() < 30.0f)
 		{
 			currItem.Alive = false;
@@ -34,18 +34,18 @@ void Item::Update(float deltaSeconds, PlayerState& playerState, WorldState& worl
 		{
 			vecToPlayer.Normalize();
 
-			Vector2d newPosition = currItem.Positon;
+			Vector2d newPosition = currItem.Position;
 			newPosition += vecToPlayer * -50.0f * deltaSeconds;
 
 			if (worldState.IsWalkableTile(newPosition))
 			{
-				currItem.Positon = newPosition;
+				currItem.Position = newPosition;
 			}
 		}
 		
 	}
 
-	Position = currItem.Positon - Vector2d(Size.X * 0.5f, Size.Y * 0.5f);
+	Position = currItem.Position - Vector2d(Size.X * 0.5f, Size.Y * 0.5f);
 	Visible = currItem.Alive;
 
 }

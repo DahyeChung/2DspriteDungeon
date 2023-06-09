@@ -7,6 +7,7 @@
 #include "Foe.h"
 #include "HUD.h"
 #include "BG.h"
+#include "Projectile.h"
 
 namespace DungeonGame
 {
@@ -58,12 +59,20 @@ namespace DungeonGame
 		playerState.HasFinishedGame = false;
 		playerState.PlayerHP = 5;
 		playerState.InvincibilitySeconds = 0.0f;
+		playerState.ShotCooldownSeconds = 0.0f;
 
 
 		playerState.WantsToGoUp = false;
 		playerState.WantsToGoDown = false;
 		playerState.WantsToGoLeft = false;
 		playerState.WantsToGoRight = false;
+		playerState.WantsToShoot = false;
+
+		//shoot
+		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(144.0f,72.0f)});
+		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(144.0f,144.0f)});
+		playerState.Projectiles.push_back({ false, 0.0f, Vector2d(144.0f,200.0f)});
+
 
 		worldState.SecondsSincePlayerDefeat = 0.0f;
 
@@ -90,7 +99,7 @@ namespace DungeonGame
 		
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,7.0f * worldState.TileSizeInPixels.Y) });
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
-		worldState.Items.push_back({ true,Item_BluePotion, Vector2d(2.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
+		worldState.Items.push_back({ true,Item_BluePotion, Vector2d( 2.0f * worldState.TileSizeInPixels.X,9.0f * worldState.TileSizeInPixels.Y) });
 
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(7.0f * worldState.TileSizeInPixels.X,7.0f * worldState.TileSizeInPixels.Y) });
 		worldState.Items.push_back({ true,Item_RedPotion, Vector2d(7.0f * worldState.TileSizeInPixels.X,8.0f * worldState.TileSizeInPixels.Y) });
@@ -150,6 +159,18 @@ namespace DungeonGame
 		
 		//newHero->Position = Vector2d(3.0f * worldState.TileSizeInPixels.X, 2.0f*worldState.TileSizeInPixels.Y);
 		SpriteList.push_back(newHero);
+
+
+		//Projectile
+		for (unsigned int i = 0; i < playerState.Projectiles.size(); ++i)
+		{
+			std::string shotFilepath = "Assets/Sprites/Hero/Attack/attack.bmp";
+
+			Projectile* newShot = new Projectile;
+			newShot->Initialize(pRenderer, shotFilepath);
+			newShot->SetProjectileIndex(i);
+			SpriteList.push_back(newShot);
+		}
 	
 		
 		//Item Inventory
@@ -195,6 +216,11 @@ namespace DungeonGame
 					playerState.WantsToGoRight = true;
 					break;
 
+				case SDLK_SPACE:
+					playerState.WantsToShoot = true;
+					break;
+
+
 
 				}
 
@@ -226,6 +252,10 @@ namespace DungeonGame
 					playerState.WantsToGoRight = false;
 					break;
 
+				case SDLK_SPACE:
+					playerState.WantsToShoot = false;
+					break;
+
 
 				}
 
@@ -236,6 +266,7 @@ namespace DungeonGame
 	{
 		//testDirection.Normalize();
 		//testSprite.Position += testDirection * 50.0f * deltaSeconds;
+
 
 		for (unsigned int i = 0; i < SpriteList.size(); ++i)
 		{

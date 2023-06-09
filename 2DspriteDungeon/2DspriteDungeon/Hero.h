@@ -7,7 +7,9 @@ namespace DungeonGame
 	{
 	public: 
 		virtual void Update(float deltaSeconds, PlayerState& playerState, WorldState& worldState);
-		
+
+	private: 
+		void Shoot(PlayerState& playerState);
 	};
 
 }
