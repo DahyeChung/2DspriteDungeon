@@ -1,9 +1,9 @@
 #pragma once
-#include "Sprite.h"
+#include "AnimatedSprite.h"
 
 namespace DungeonGame
 {
-	class Foe : public Sprite
+	class Foe : public AnimatedSprite
 	{
 	public:
 		void SetFoeIndex(int newIndex);

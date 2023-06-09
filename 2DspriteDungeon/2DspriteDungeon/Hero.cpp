@@ -3,15 +3,6 @@
 
 using namespace DungeonGame;
 
-void Hero::Initialize(SDL_Renderer* pRenderer, const std::string& image1Filepath, const std::string& image2Filepath)
-{
-	Frame1Texture = LoadTexture(pRenderer, image1Filepath);
-	Frame2Texture = LoadTexture(pRenderer, image2Filepath);
-	MyTexture = Frame1Texture;
-	SecondsAlive = 0.0f;
-}
-
-
 void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& worldState)
 {
 	bool playerIsAlive = playerState.PlayerHP > 0;
@@ -77,15 +68,7 @@ void Hero:: Update(float deltaSeconds, PlayerState& playerState, WorldState& wor
 	else
 		Visible = playerIsAlive; //damage blink 
 
-	//Animation Logic
-	{
-		SecondsAlive += deltaSeconds;
-		int frame = (int)(SecondsAlive * animationMultiplier) % 2;
-		if (frame == 0)
-			MyTexture = Frame1Texture;
-		else if (frame == 1)
-			MyTexture = Frame2Texture;
-	}
+	AnimatedSprite::Update(deltaSeconds, playerState, worldState);
 
 }
 

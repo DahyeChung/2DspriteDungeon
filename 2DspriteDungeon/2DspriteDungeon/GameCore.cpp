@@ -144,10 +144,8 @@ namespace DungeonGame
 			//Enemies
 			for (unsigned int i = 0; i < worldState.Foes.size(); ++i)
 			{
-				std::string foeFilepath = "Assets/Sprites/Enemy/Attack1_0.bmp";
-
 				Foe* newFoe = new Foe;
-				newFoe->Initialize(pRenderer, foeFilepath);
+				newFoe->Initialize(pRenderer, "Assets/Sprites/Enemy/Attack1_0.bmp","Assets/Sprites/Enemy/AttackMain2.bmp");
 				newFoe->SetFoeIndex(i);
 				SpriteList.push_back(newFoe);
 			}

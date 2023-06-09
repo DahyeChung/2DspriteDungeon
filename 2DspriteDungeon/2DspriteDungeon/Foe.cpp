@@ -7,14 +7,12 @@ void Foe::SetFoeIndex(int newIndex)
 	FoeIndex = newIndex;
 }
 
-
-
-
 void Foe::Update(float deltaSeconds, PlayerState& playerState, WorldState& worldState)
 {
 	const float FOE_MOVEMENT_SPEED = 100.0f; //enemy speed
 
 	FoeData& currFoe = worldState.Foes[FoeIndex];
+	AnimatedMultiplier = 0.0f;
 
 	if (currFoe.Alive && !playerState.PlayerHasWon()) //ÃßÀû
 	{
@@ -33,9 +31,13 @@ void Foe::Update(float deltaSeconds, PlayerState& playerState, WorldState& world
 		vecToPlayer.Normalize(); 
 		vecToPlayer *= -1.0f;
 		currFoe.Positon += vecToPlayer * FOE_MOVEMENT_SPEED * deltaSeconds;
+		AnimatedMultiplier = 6.0f;
+
 	}
 
 	Position = currFoe.Positon - Vector2d(Size.X * 0.5f, Size.Y * 0.5f);
 	Visible = currFoe.Alive;
+
+	AnimatedSprite::Update(deltaSeconds, playerState, worldState);
 
 }
